@@ -42,17 +42,14 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     }
 
     @Override
-    public void update(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
+    public void delete(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
+        List<ProgrammingLanguage> programmingLanguages = programmingLanguageRepository.findAll();
 
+        for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+            if (programmingLanguage.getName().equals(createProgrammingLanguagesRequest.getName())) {
+                programmingLanguageRepository.delete(programmingLanguage);
+            }
+        }
     }
 
-    @Override
-    public void delete(int id) {
-
-    }
-
-    @Override
-    public ProgrammingLanguage getById(int id) {
-        return null;
-    }
 }

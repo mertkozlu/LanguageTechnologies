@@ -41,17 +41,15 @@ public class SubTechnologyManager implements SubTechnologyService {
     }
 
     @Override
-    public void update(ProgrammingLanguage programmingLanguage) {
+    public void delete(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
+        List<SubTechnology> subTechnologies = subTechnologyRepository.findAll();
 
+        for (SubTechnology subTechnology : subTechnologies) {
+            if (subTechnology.getName().equals(createSubTechnologiesRequest.getName())) {
+                subTechnologyRepository.delete(subTechnology);
+            }
+        }
     }
 
-    @Override
-    public void delete(ProgrammingLanguage programmingLanguage) {
 
-    }
-
-    @Override
-    public ProgrammingLanguage getById(int id) {
-        return null;
-    }
 }

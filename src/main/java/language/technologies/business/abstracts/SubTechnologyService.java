@@ -9,7 +9,7 @@ import java.util.List;
 public interface SubTechnologyService {
     List<GetAllSubTechnologyResponse> getALl();
     void add(CreateSubTechnologiesRequest createSubTechnologiesRequest);
-    void update(ProgrammingLanguage programmingLanguage);
-    void delete(ProgrammingLanguage programmingLanguage);
-    ProgrammingLanguage getById(int id);
+    void delete(CreateSubTechnologiesRequest createSubTechnologiesRequest);
+
+
 }

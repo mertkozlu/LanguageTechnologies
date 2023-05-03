@@ -3,10 +3,7 @@ package language.technologies.wepApi.Controllers;
 import language.technologies.business.abstracts.SubTechnologyService;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +22,13 @@ public class SubTechnologiesController {
     }
 
     @PostMapping("/add")
-    public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
+    public void add(@RequestBody CreateSubTechnologiesRequest createSubTechnologiesRequest) {
         this.subTechnologyService.add(createSubTechnologiesRequest);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody CreateSubTechnologiesRequest createSubTechnologiesRequest) {
+        this.subTechnologyService.delete(createSubTechnologiesRequest);
     }
 
 

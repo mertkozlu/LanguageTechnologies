@@ -1,6 +1,9 @@
 package language.technologies.entities;
 
+import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -35,4 +38,5 @@ public class ProgrammingLanguage {
     public void setName(String name) {
         this.name = name;
     }
+
 }
