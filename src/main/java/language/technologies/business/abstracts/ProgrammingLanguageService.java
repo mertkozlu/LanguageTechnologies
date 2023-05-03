@@ -1,9 +1,7 @@
 package language.technologies.business.abstracts;
 
 import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
-import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
-import language.technologies.entities.ProgrammingLanguage;
 
 import java.util.List;
 

@@ -4,7 +4,6 @@ import language.technologies.business.abstracts.SubTechnologyService;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
 import language.technologies.dataAccess.abstracts.SubTechnologyRepository;
-import language.technologies.entities.ProgrammingLanguage;
 import language.technologies.entities.SubTechnology;
 import org.springframework.stereotype.Service;
 
