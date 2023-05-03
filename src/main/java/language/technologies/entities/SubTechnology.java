@@ -7,12 +7,12 @@ import java.util.List;
 @Entity
 public class SubTechnology {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
     @Column
     private String name;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "programmingLanguage_id")
     private ProgrammingLanguage programmingLanguage;
 
@@ -30,4 +30,8 @@ public class SubTechnology {
     public void setName(String name) {
         this.name = name;
     }
+    private SubTechnology getById(int id) {
+        return null;
+    }
+
 }

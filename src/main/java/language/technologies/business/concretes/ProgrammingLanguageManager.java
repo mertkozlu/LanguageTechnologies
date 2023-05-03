@@ -38,18 +38,11 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
         programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
         this.programmingLanguageRepository.save(programmingLanguage);
-
     }
 
     @Override
-    public void delete(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
-        List<ProgrammingLanguage> programmingLanguages = programmingLanguageRepository.findAll();
-
-        for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
-            if (programmingLanguage.getName().equals(createProgrammingLanguagesRequest.getName())) {
-                programmingLanguageRepository.delete(programmingLanguage);
-            }
-        }
+    public void deleteById(int id) {
+        this.programmingLanguageRepository.deleteById(id);
     }
 
 }

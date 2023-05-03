@@ -25,9 +25,9 @@ public class ProgrammingLanguagesController {
         this.programmingLanguageService.add(createProgrammingLanguagesRequest);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest){
-        this.programmingLanguageService.delete(createProgrammingLanguagesRequest);
+    @DeleteMapping("/deleteById")
+    public void deleteById(@RequestBody int id){
+        this.programmingLanguageService.deleteById(id);
     }
 
 

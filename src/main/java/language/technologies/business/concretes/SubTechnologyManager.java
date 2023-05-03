@@ -41,15 +41,8 @@ public class SubTechnologyManager implements SubTechnologyService {
     }
 
     @Override
-    public void delete(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
-        List<SubTechnology> subTechnologies = subTechnologyRepository.findAll();
-
-        for (SubTechnology subTechnology : subTechnologies) {
-            if (subTechnology.getName().equals(createSubTechnologiesRequest.getName())) {
-                subTechnologyRepository.delete(subTechnology);
-            }
-        }
+    public void deleteById(int id) {
+        this.subTechnologyRepository.deleteById(id);
     }
-
 
 }

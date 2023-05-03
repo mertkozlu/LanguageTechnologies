@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProgrammingLanguageService {
     List<GetAllProgrammingLanguageResponse> getALl();
     void add(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest);
-    void delete(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest);
+    void deleteById(int id);
 
 }

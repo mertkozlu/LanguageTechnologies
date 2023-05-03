@@ -16,7 +16,7 @@ public class SubTechnologiesController {
         this.subTechnologyService = subTechnologyService;
     }
 
-    @GetMapping("getall")
+    @GetMapping("getAll")
     public List<GetAllSubTechnologyResponse> getAll() {
         return subTechnologyService.getALl();
     }
@@ -26,9 +26,9 @@ public class SubTechnologiesController {
         this.subTechnologyService.add(createSubTechnologiesRequest);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody CreateSubTechnologiesRequest createSubTechnologiesRequest) {
-        this.subTechnologyService.delete(createSubTechnologiesRequest);
+    @DeleteMapping("/deleteById")
+    public void deleteById(@RequestBody int id) {
+        this.subTechnologyService.deleteById(id);
     }
 
 

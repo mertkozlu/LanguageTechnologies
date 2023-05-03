@@ -9,11 +9,13 @@ import java.util.List;
 @Table
 public class ProgrammingLanguage {
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
     @Column
     private String name;
+    @OneToMany(mappedBy = "programmingLanguage")
+    List<SubTechnology> subTechnology;
 
     public ProgrammingLanguage() {
     }
