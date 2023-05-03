@@ -1,22 +1,15 @@
 package language.technologies.dto.requests;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateProgrammingLanguagesRequest {
     private String name;
 
-    public CreateProgrammingLanguagesRequest() {
-    }
-
-    public CreateProgrammingLanguagesRequest(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
 }

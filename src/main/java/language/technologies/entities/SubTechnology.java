@@ -1,10 +1,17 @@
 package language.technologies.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
-@Table
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table
 public class SubTechnology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,22 +23,6 @@ public class SubTechnology {
     @JoinColumn(name = "programmingLanguage_id")
     private ProgrammingLanguage programmingLanguage;
 
-    public SubTechnology() {
-    }
 
-    public SubTechnology(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    private SubTechnology getById(int id) {
-        return null;
-    }
 
 }

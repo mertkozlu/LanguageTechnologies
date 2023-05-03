@@ -1,11 +1,17 @@
 package language.technologies.entities;
 
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table
 public class ProgrammingLanguage {
     @Id
@@ -17,28 +23,6 @@ public class ProgrammingLanguage {
     @OneToMany(mappedBy = "programmingLanguage")
     List<SubTechnology> subTechnology;
 
-    public ProgrammingLanguage() {
-    }
 
-    public ProgrammingLanguage(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }
