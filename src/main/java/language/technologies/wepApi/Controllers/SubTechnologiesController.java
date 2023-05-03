@@ -1,8 +1,8 @@
 package language.technologies.wepApi.Controllers;
 
 import language.technologies.business.abstracts.SubTechnologyService;
-import language.technologies.business.requests.CreateSubTechnologiesRequest;
-import language.technologies.business.responses.GetAllSubTechnologyResponse;
+import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+import language.technologies.dto.responses.GetAllSubTechnologyResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

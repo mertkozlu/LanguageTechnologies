@@ -1,23 +1,13 @@
-package language.technologies.business.requests;
+package language.technologies.dto.requests;
 
 public class CreateProgrammingLanguagesRequest {
-    private int id;
     private String name;
 
     public CreateProgrammingLanguagesRequest() {
     }
 
-    public CreateProgrammingLanguagesRequest(int id, String name) {
-        this.id = id;
+    public CreateProgrammingLanguagesRequest(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

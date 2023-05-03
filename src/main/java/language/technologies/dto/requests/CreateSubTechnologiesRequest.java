@@ -1,4 +1,4 @@
-package language.technologies.business.requests;
+package language.technologies.dto.requests;
 
 public class CreateSubTechnologiesRequest {
     private String name;

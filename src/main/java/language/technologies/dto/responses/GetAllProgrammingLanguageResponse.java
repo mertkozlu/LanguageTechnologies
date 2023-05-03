@@ -1,4 +1,4 @@
-package language.technologies.business.responses;
+package language.technologies.dto.responses;
 
 public class GetAllProgrammingLanguageResponse {
     private int id;

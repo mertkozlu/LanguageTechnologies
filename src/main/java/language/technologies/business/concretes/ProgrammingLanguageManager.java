@@ -1,8 +1,8 @@
 package language.technologies.business.concretes;
 
 import language.technologies.business.abstracts.ProgrammingLanguageService;
-import language.technologies.business.requests.CreateProgrammingLanguagesRequest;
-import language.technologies.business.responses.GetAllProgrammingLanguageResponse;
+import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
+import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
 import language.technologies.dataAccess.abstracts.ProgrammingLanguageRepository;
 import language.technologies.entities.ProgrammingLanguage;
 import org.springframework.stereotype.Service;
@@ -36,9 +36,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     @Override
     public void add(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
         ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
-        programmingLanguage.setId(createProgrammingLanguagesRequest.getId());
         programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
         this.programmingLanguageRepository.save(programmingLanguage);
 
+    }
+
+    @Override
+    public void update(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public ProgrammingLanguage getById(int id) {
+        return null;
     }
 }

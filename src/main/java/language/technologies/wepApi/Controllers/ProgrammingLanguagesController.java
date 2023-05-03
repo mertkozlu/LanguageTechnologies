@@ -1,9 +1,8 @@
 package language.technologies.wepApi.Controllers;
 
 import language.technologies.business.abstracts.ProgrammingLanguageService;
-import language.technologies.business.requests.CreateProgrammingLanguagesRequest;
-import language.technologies.business.responses.GetAllProgrammingLanguageResponse;
-import language.technologies.business.responses.GetAllSubTechnologyResponse;
+import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
+import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +24,12 @@ public class ProgrammingLanguagesController {
     public void add(@RequestBody CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest) {
         this.programmingLanguageService.add(createProgrammingLanguagesRequest);
     }
+
+    @DeleteMapping("/delete")
+    public void delete(int id) {
+        programmingLanguageService.delete(id);
+    }
+
 
 
 

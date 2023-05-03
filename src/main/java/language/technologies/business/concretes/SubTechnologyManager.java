@@ -1,9 +1,10 @@
 package language.technologies.business.concretes;
 
 import language.technologies.business.abstracts.SubTechnologyService;
-import language.technologies.business.requests.CreateSubTechnologiesRequest;
-import language.technologies.business.responses.GetAllSubTechnologyResponse;
+import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+import language.technologies.dto.responses.GetAllSubTechnologyResponse;
 import language.technologies.dataAccess.abstracts.SubTechnologyRepository;
+import language.technologies.entities.ProgrammingLanguage;
 import language.technologies.entities.SubTechnology;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,20 @@ public class SubTechnologyManager implements SubTechnologyService {
         subTechnology.setName(createSubTechnologiesRequest.getName());
         this.subTechnologyRepository.save(subTechnology);
 
+    }
+
+    @Override
+    public void update(ProgrammingLanguage programmingLanguage) {
+
+    }
+
+    @Override
+    public void delete(ProgrammingLanguage programmingLanguage) {
+
+    }
+
+    @Override
+    public ProgrammingLanguage getById(int id) {
+        return null;
     }
 }
