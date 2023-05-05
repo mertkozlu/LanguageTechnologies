@@ -1,8 +1,10 @@
 package language.technologies.business.concretes;
 
+import language.technologies.business.abstracts.ProgrammingLanguageService;
 import language.technologies.business.abstracts.SubTechnologyService;
 import language.technologies.dataAccess.abstracts.ProgrammingLanguageRepository;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+import language.technologies.dto.requests.DeleteSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
 import language.technologies.dataAccess.abstracts.SubTechnologyRepository;
 import language.technologies.entities.ProgrammingLanguage;
@@ -14,22 +16,27 @@ import java.util.List;
 
 @Service
 public class SubTechnologyManager implements SubTechnologyService {
-    private SubTechnologyRepository subTechnologyRepository;
-    private ProgrammingLanguageRepository programmingLanguageRepository;
+    private final SubTechnologyRepository subTechnologyRepository;
+    private final ProgrammingLanguageRepository programmingLanguageRepository;
 
-    public SubTechnologyManager(SubTechnologyRepository subTechnologyRepository, ProgrammingLanguageRepository programmingLanguageRepository) {
+    private final ProgrammingLanguageService programmingLanguageService;
+
+    public SubTechnologyManager(SubTechnologyRepository subTechnologyRepository, ProgrammingLanguageRepository programmingLanguageRepository,
+                                ProgrammingLanguageService programmingLanguageService) {
         this.subTechnologyRepository = subTechnologyRepository;
         this.programmingLanguageRepository = programmingLanguageRepository;
+        this.programmingLanguageService = programmingLanguageService;
     }
 
     @Override
     public List<GetAllSubTechnologyResponse> getALl() {
-        List<SubTechnology> subTechnologies  = subTechnologyRepository.findAll();
+        List<SubTechnology> subTechnologies = subTechnologyRepository.findAll();
         List<GetAllSubTechnologyResponse> subTechnologiesResponses = new ArrayList<GetAllSubTechnologyResponse>();
 
         for (SubTechnology subTechnology : subTechnologies) {
             GetAllSubTechnologyResponse responseItem = new GetAllSubTechnologyResponse();
             responseItem.setName(subTechnology.getName());
+            responseItem.setId(subTechnology.getId());
 
             subTechnologiesResponses.add(responseItem);
         }
@@ -38,9 +45,9 @@ public class SubTechnologyManager implements SubTechnologyService {
 
     @Override
     public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
-        SubTechnology subTechnology = new SubTechnology();
-        ProgrammingLanguage programmingLanguage = programmingLanguageRepository.findById(createSubTechnologiesRequest.getLanguageId()).get();
 
+        ProgrammingLanguage programmingLanguage = programmingLanguageService.getProgramingLanguageById(createSubTechnologiesRequest.getId());
+        SubTechnology subTechnology = new SubTechnology();
         subTechnology.setName(createSubTechnologiesRequest.getName());
         subTechnology.setProgrammingLanguage(programmingLanguage);
         this.subTechnologyRepository.save(subTechnology);
@@ -48,8 +55,20 @@ public class SubTechnologyManager implements SubTechnologyService {
     }
 
     @Override
-    public void deleteById(int id) {
-        this.subTechnologyRepository.deleteById(id);
+    public void deleteById(DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) {
+        this.subTechnologyRepository.deleteById(deleteSubTechnologiesRequest.getDeleteId());
+    }
+
+    @Override
+    public SubTechnology getSubTechnologyById(int id) {
+        return subTechnologyRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void update(CreateSubTechnologiesRequest createSubTechnologiesRequest, int id) {
+        SubTechnology subTechnology = subTechnologyRepository.findById(id).get();
+        subTechnology.setName(createSubTechnologiesRequest.getName());
+        subTechnologyRepository.save(subTechnology);
     }
 
 }

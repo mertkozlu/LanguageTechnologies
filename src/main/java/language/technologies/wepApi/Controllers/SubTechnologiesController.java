@@ -2,7 +2,9 @@ package language.technologies.wepApi.Controllers;
 
 import language.technologies.business.abstracts.SubTechnologyService;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
+import language.technologies.dto.requests.DeleteSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
+import language.technologies.entities.SubTechnology;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +29,18 @@ public class SubTechnologiesController {
     }
 
     @DeleteMapping("/deleteById")
-    public void deleteById(@RequestBody int id) {
-        this.subTechnologyService.deleteById(id);
+    public void deleteById(@RequestBody DeleteSubTechnologiesRequest deleteSubTechnologiesRequest) {
+        this.subTechnologyService.deleteById(deleteSubTechnologiesRequest);
+    }
+
+    @GetMapping("/getBy{id}")
+    public SubTechnology getById(@PathVariable int id) {
+        return subTechnologyService.getSubTechnologyById(id);
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody CreateSubTechnologiesRequest createSubTechnologiesRequest, int id) {
+        this.subTechnologyService.update(createSubTechnologiesRequest, id);
     }
 
 

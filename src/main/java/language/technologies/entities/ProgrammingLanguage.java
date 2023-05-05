@@ -1,6 +1,5 @@
 package language.technologies.entities;
 
-import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "programmingLanguage")
 public class ProgrammingLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +21,6 @@ public class ProgrammingLanguage {
     private String name;
     @OneToMany(mappedBy = "programmingLanguage")
     List<SubTechnology> subTechnology;
-
 
 
 }

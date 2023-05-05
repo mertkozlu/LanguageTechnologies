@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
-    private ProgrammingLanguageRepository programmingLanguageRepository;
+    private final ProgrammingLanguageRepository programmingLanguageRepository;
 
     public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
         this.programmingLanguageRepository = programmingLanguageRepository;
@@ -43,6 +44,19 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     @Override
     public void deleteById(int id) {
         this.programmingLanguageRepository.deleteById(id);
+    }
+
+
+    @Override
+    public ProgrammingLanguage getProgramingLanguageById(int id) {
+        return programmingLanguageRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void update(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest, int id) {
+        ProgrammingLanguage programmingLanguage = programmingLanguageRepository.findById(id).get();
+        programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
+        programmingLanguageRepository.save(programmingLanguage);
     }
 
 }

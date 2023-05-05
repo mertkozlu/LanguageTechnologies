@@ -3,6 +3,7 @@ package language.technologies.wepApi.Controllers;
 import language.technologies.business.abstracts.ProgrammingLanguageService;
 import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
 import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
+import language.technologies.entities.ProgrammingLanguage;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ProgrammingLanguagesController {
     public ProgrammingLanguagesController(ProgrammingLanguageService programmingLanguageService) {
         this.programmingLanguageService = programmingLanguageService;
     }
+
     @GetMapping("/getall")
     public List<GetAllProgrammingLanguageResponse> getAll() {
         return programmingLanguageService.getALl();
@@ -26,10 +28,17 @@ public class ProgrammingLanguagesController {
     }
 
     @DeleteMapping("/deleteById")
-    public void deleteById(@RequestBody int id){
+    public void deleteById(@RequestParam int id) {
         this.programmingLanguageService.deleteById(id);
     }
 
+    @GetMapping("/getBy{id}")
+    public ProgrammingLanguage getById(@PathVariable int id) {
+        return programmingLanguageService.getProgramingLanguageById(id);
+    }
 
-
+    @PutMapping("/update")
+    public void update(@RequestBody CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest, int id) {
+        this.programmingLanguageService.update(createProgrammingLanguagesRequest, id);
+    }
 }

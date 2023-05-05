@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "subTechnologies")
 public class SubTechnology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,6 @@ public class SubTechnology {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "programmingLanguage_id")
     private ProgrammingLanguage programmingLanguage;
-
 
 
 }
