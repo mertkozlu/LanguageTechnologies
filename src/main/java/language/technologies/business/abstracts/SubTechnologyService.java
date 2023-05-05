@@ -3,6 +3,7 @@ package language.technologies.business.abstracts;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.requests.DeleteSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
+import language.technologies.dto.responses.GetByIdSubTechnologyResponse;
 import language.technologies.entities.SubTechnology;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface SubTechnologyService {
     SubTechnology getSubTechnologyById(int id);
 
     void update(CreateSubTechnologiesRequest createSubTechnologiesRequest, int id);
+
+    GetByIdSubTechnologyResponse getById(int id) throws Exception;
+
 
 }

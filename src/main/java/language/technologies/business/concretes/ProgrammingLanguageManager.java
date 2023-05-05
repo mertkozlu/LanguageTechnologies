@@ -4,6 +4,7 @@ import language.technologies.business.abstracts.ProgrammingLanguageService;
 import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
 import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
 import language.technologies.dataAccess.abstracts.ProgrammingLanguageRepository;
+import language.technologies.dto.responses.GetByIdProgrammingLanguageResponse;
 import language.technologies.entities.ProgrammingLanguage;
 import org.springframework.stereotype.Service;
 
@@ -46,17 +47,26 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
         this.programmingLanguageRepository.deleteById(id);
     }
 
-
     @Override
-    public ProgrammingLanguage getProgramingLanguageById(int id) {
-        return programmingLanguageRepository.findById(id).orElse(null);
+    public GetByIdProgrammingLanguageResponse getById(int id) throws Exception {
+        ProgrammingLanguage programmingLanguage = programmingLanguageRepository.findById(id).orElse(null);
+        if (programmingLanguage == null) {
+            throw new Exception("ProgrammingLanguage could not find");
+        }
+        return new GetByIdProgrammingLanguageResponse(programmingLanguage);
     }
+
 
     @Override
     public void update(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest, int id) {
         ProgrammingLanguage programmingLanguage = programmingLanguageRepository.findById(id).get();
         programmingLanguage.setName(createProgrammingLanguagesRequest.getName());
         programmingLanguageRepository.save(programmingLanguage);
+    }
+
+    @Override
+    public ProgrammingLanguage getProgrammingLanguageById(int id) {
+        return null;
     }
 
 }

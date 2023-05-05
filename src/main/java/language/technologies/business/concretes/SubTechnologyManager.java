@@ -7,6 +7,7 @@ import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.requests.DeleteSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
 import language.technologies.dataAccess.abstracts.SubTechnologyRepository;
+import language.technologies.dto.responses.GetByIdSubTechnologyResponse;
 import language.technologies.entities.ProgrammingLanguage;
 import language.technologies.entities.SubTechnology;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class SubTechnologyManager implements SubTechnologyService {
     @Override
     public void add(CreateSubTechnologiesRequest createSubTechnologiesRequest) {
 
-        ProgrammingLanguage programmingLanguage = programmingLanguageService.getProgramingLanguageById(createSubTechnologiesRequest.getId());
+        ProgrammingLanguage programmingLanguage = programmingLanguageService.getProgrammingLanguageById(createSubTechnologiesRequest.getId());
         SubTechnology subTechnology = new SubTechnology();
         subTechnology.setName(createSubTechnologiesRequest.getName());
         subTechnology.setProgrammingLanguage(programmingLanguage);
@@ -69,6 +70,16 @@ public class SubTechnologyManager implements SubTechnologyService {
         SubTechnology subTechnology = subTechnologyRepository.findById(id).get();
         subTechnology.setName(createSubTechnologiesRequest.getName());
         subTechnologyRepository.save(subTechnology);
+    }
+
+    @Override
+    public GetByIdSubTechnologyResponse getById(int id) throws Exception {
+        SubTechnology subTechnology = subTechnologyRepository.findById(id).orElse(null);
+        if (subTechnology == null) {
+            throw new Exception("SubTechnology could not find");
+
+        }
+        return new GetByIdSubTechnologyResponse(subTechnology);
     }
 
 }

@@ -22,5 +22,4 @@ public class ProgrammingLanguage {
     @OneToMany(mappedBy = "programmingLanguage")
     List<SubTechnology> subTechnology;
 
-
 }

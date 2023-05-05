@@ -4,7 +4,7 @@ import language.technologies.business.abstracts.SubTechnologyService;
 import language.technologies.dto.requests.CreateSubTechnologiesRequest;
 import language.technologies.dto.requests.DeleteSubTechnologiesRequest;
 import language.technologies.dto.responses.GetAllSubTechnologyResponse;
-import language.technologies.entities.SubTechnology;
+import language.technologies.dto.responses.GetByIdSubTechnologyResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,9 +33,9 @@ public class SubTechnologiesController {
         this.subTechnologyService.deleteById(deleteSubTechnologiesRequest);
     }
 
-    @GetMapping("/getBy{id}")
-    public SubTechnology getById(@PathVariable int id) {
-        return subTechnologyService.getSubTechnologyById(id);
+    @GetMapping("/{id}")
+    public GetByIdSubTechnologyResponse getById(@PathVariable int id) throws Exception {
+        return subTechnologyService.getById(id);
     }
 
     @PutMapping("/update")

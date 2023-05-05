@@ -2,6 +2,7 @@ package language.technologies.business.abstracts;
 
 import language.technologies.dto.requests.CreateProgrammingLanguagesRequest;
 import language.technologies.dto.responses.GetAllProgrammingLanguageResponse;
+import language.technologies.dto.responses.GetByIdProgrammingLanguageResponse;
 import language.technologies.entities.ProgrammingLanguage;
 
 import java.util.List;
@@ -13,7 +14,9 @@ public interface ProgrammingLanguageService {
 
     void deleteById(int id);
 
-    ProgrammingLanguage getProgramingLanguageById(int id);
+    GetByIdProgrammingLanguageResponse getById(int id) throws Exception;
 
     void update(CreateProgrammingLanguagesRequest createProgrammingLanguagesRequest, int id);
+
+    ProgrammingLanguage getProgrammingLanguageById(int id);
 }
